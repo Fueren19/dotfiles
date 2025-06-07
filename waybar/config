@@ -1,0 +1,143 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 42,
+    "spacing": 4,
+    "margin-top": 0,
+    "margin-left": 7,
+    "margin-right": 7,
+    "margin-bottom": -6,
+
+    "modules-left": ["custom/launcher", "hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["network", "cpu", "memory", "pulseaudio", "custom/bluetooth", "tray", "clock"],
+
+    // Style properties
+    "gtk-layer-shell": true,
+
+    // Modules configuration
+    "hyprland/workspaces": {
+        "format": "{}",
+        "on-click": "activate",
+        "format-icons": {
+            "6": "1",
+            "7": "2",
+            "8": "3",
+        },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+        },
+        "sort-by-number": true,
+        "all-outputs": false,
+        "on-scroll-up": "hyprctl dispatch workspace -1",
+        "on-scroll-down": "hyprctl dispatch workspace +1",
+        "show-special": true
+    },
+
+    "custom/launcher": {
+        "format": "󰣇",
+        "tooltip": false,
+        "on-click": "rofi -show drun -show-icons",
+        "on-click-right": "rofi -show window -show-icons"
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 60,
+        "separate-outputs": true,
+        "rewrite": {
+            "": "Hyprland Masaüstü",
+        }
+    },
+
+    "cpu": {
+        "interval": 2,
+        "format": "󰍛  {usage}%",
+        "max-length": 10,
+        "tooltip": true,
+        "on-click": "kitty -e btop"
+    },
+
+    "memory": {
+        "interval": 2,
+        "format": "󰾅  {used:0.1f}GB",
+        "max-length": 10,
+        "tooltip": true,
+        "tooltip-format": "{used:0.1f}GB / {total:0.1f}GB",
+        "on-click": "kitty -e htop"
+    },
+
+    "network": {
+        "format-wifi": "{icon}  {signalStrength}%",
+        "format-ethernet": "󰈀",
+        "format-icons": ["󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+        "format-disconnected": "󰤮   Bağlı Değil",
+        "tooltip-format-wifi": "{essid} | {signalStrength}% | {bandwidthUpBits} 󰕒 {bandwidthDownBits} 󰇚",
+        "tooltip-format-ethernet": "{ifname} | {ipaddr} | {bandwidthUpBits} 󰕒 {bandwidthDownBits} 󰇚",
+        "tooltip-format-disconnected": "Bağlı Değil",
+        "on-click": "/home/furkan/Belgeler/python/waybar/list.py",
+        "interval": 2
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "󰂰  {volume}%",
+        "format-bluetooth-muted": "󰂲",
+        "format-muted": "󰝟",
+        "format-source": "󰍬 {volume}%",
+        "format-source-muted": "󰍭",
+        "format-icons": {
+            "headphone": "󰋋 ",
+            "hands-free": "󰋋 ",
+            "headset": "󰋋 ",
+            "phone": "󰄜 ",
+            "portable": "󰄜 ",
+            "car": "󰄋 ",
+            "default": ["󰕿 ", "󰖀 ", "󰕾 "]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-middle": "kitty -e pulsemixer"
+    },
+
+    "custom/bluetooth": {
+        "format": "{}",
+        "return-type": "json",
+        "interval": 5,
+        "exec": "~/.config/waybar/scripts/bluetooth.sh",
+        "exec-if": "which bluetoothctl",
+        "on-click": "bluetoothctl connect 94:08:C7:14:72:EA",
+        "on-click-right": "bluetoothctl disconnect 94:08:C7:14:72:EA",
+        "on-click-middle": "blueman-manager"
+    },
+
+    "clock": {
+        "format": "󰥔  {:%H:%M}",
+        "tooltip-format": "<tt><span>{calendar}</span></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b>{}</b></span>"
+            }
+        },
+        "actions": {
+            "on-click": "mode",
+            "on-click-right": "gnome-calendar",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+
+    "tray": {
+        "spacing": 5
+    }
+}

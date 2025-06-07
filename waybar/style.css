@@ -1,0 +1,247 @@
+/* Waybar Style: Enhanced Rosé Pine Theme */
+* {
+    font-family: "Fira Sans", "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 14px;
+    border: none;
+}
+
+/* Enhanced Rosé Pine Color Palette */
+@define-color base            #413B3A;
+@define-color surface         #504A49;
+@define-color overlay         @color1;
+@define-color muted           @color11;
+@define-color subtle          @color8;
+@define-color text            #FFF3F0;
+@define-color love            #c97169;
+@define-color gold            #9ADCD6;
+@define-color rose            #FBDB8A;
+@define-color pine            #DDDDDD;
+@define-color foam            #DBA0E5;
+@define-color iris            #FFC5B3;
+@define-color blue            #89A3C2;
+@define-color highlightLow    #2a283e;
+@define-color highlightMed    #44415a;
+@define-color highlightHigh   #56526e;
+
+window#waybar {
+    background-color: transparent;
+}
+
+#waybar {
+    background: transparent;
+    color: @text;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background-color: alpha(@base, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 5px 3px;
+    padding: 2px;
+    padding-bottom: 2.5px;
+    padding-top: 2px;
+    border: 1px solid alpha(@surface, 0.4);
+}
+
+#workspaces button {
+    padding: 0 8px;
+    margin: 3px 2px;
+    background-color: @surface;
+    color: @subtle;
+    border-radius: 12px;
+    min-width: 28px;
+    transition: all 0.3s ease;
+}
+
+#workspaces {
+    margin-right: 6px;
+}
+
+#workspaces button:hover {
+    background-color: alpha(@iris, 0.3);
+    color: @text;
+}
+
+#workspaces button.active {
+    background-color: @iris;
+    color: @base;
+    font-weight: bold;
+}
+
+#workspaces button.active:hover {
+    background-color: alpha(@iris, 0.9);
+    color: @base;
+}
+
+#workspaces button.urgent {
+    background-color: @love;
+    color: @base;
+}
+
+#custom-launcher {
+    margin: 3px 3px 3px 6px;
+    padding: 0 10px;
+    padding-right: 13px;
+    background-color: @blue;
+    color: @base;
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+#window {
+    padding: 0 15px;
+    color: @text;
+}
+
+#custom-media {
+    padding: 0 15px;
+    margin: 3px 2px;
+    border-radius: 12px;
+    background-color: alpha(@pine, 0.25);
+    color: @pine;
+    font-weight: 600;
+    min-width: 100px;
+}
+
+#custom-media.Playing {
+    color: @pine;
+    background-color: alpha(@pine, 0.3);
+}
+
+#custom-media.Paused {
+    color: @muted;
+    background-color: alpha(@muted, 0.25);
+}
+
+#custom-updates {
+    padding: 0 10px;
+    margin: 3px 2px;
+    border-radius: 12px;
+    background-color: alpha(@gold, 0.25);
+    color: @gold;
+}
+
+#network {
+    padding: 0 10px;
+    margin: 3px 2px;
+    margin-left: 6px;
+    border-radius: 12px;
+    background-color: alpha(@foam, 0.25);
+    color: @foam;
+}
+
+#tray {
+    padding: 0 10px;
+    margin: 3px 2px;
+    margin-right: 3px;
+    border-radius: 12px;
+    background-color: alpha(#dfdfdf, 0.2);
+}
+
+#network.disconnected {
+    background-color: alpha(@love, 0.25);
+    color: @love;
+}
+
+#cpu {
+    padding: 0 10px;
+    margin: 3px 2px;
+    border-radius: 12px;
+    background-color: alpha(@blue, 0.25);
+    color: @blue;
+}
+
+#memory {
+    padding: 0 10px;
+    margin: 3px 2px;
+    border-radius: 12px;
+    background-color: alpha(@rose, 0.25);
+    color: @rose;
+}
+
+#pulseaudio {
+    padding: 0 10px;
+    margin: 3px 2px;
+    border-radius: 12px;
+    background-color: alpha(@iris, 0.25);
+    color: @iris;
+}
+
+#pulseaudio.muted {
+    background-color: alpha(@love, 0.25);
+    padding-right: 13px;
+    color: @love;
+}
+
+#custom-bluetooth {
+    padding: 0 10px;
+    margin: 3px 2px;
+    border-radius: 12px;
+    background-color: alpha(@blue, 0.25);
+    color: @blue;
+}
+
+#clock {
+    padding: 0 12px;
+    margin: 3px 6px 3px 2px;
+    border-radius: 12px;
+    background-color: @iris;
+    color: @base;
+    font-weight: bold;
+}
+
+tooltip {
+    background-color: @base;
+    border-radius: 12px;
+    border: 1px solid @surface;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+tooltip label {
+    color: @text;
+    padding: 8px;
+}
+
+calendar {
+    background-color: @base;
+    color: @text;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+calendar:selected {
+    background-color: @iris;
+    color: @base;
+    border-radius: 8px;
+}
+
+calendar.header {
+    background-color: transparent;
+    color: @iris;
+    font-weight: bold;
+    padding: 3px;
+}
+
+calendar.button {
+    color: @subtle;
+    border-radius: 8px;
+}
+
+calendar.highlight {
+    color: @iris;
+    font-weight: bold;
+}
+
+calendar.month {
+    background-color: transparent;
+    color: @text;
+    padding: 4px 8px;
+    border-radius: 10px;
+}
+
+calendar.week {
+    color: @iris;
+    font-weight: bold;
+}
