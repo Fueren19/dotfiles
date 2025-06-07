@@ -1,0 +1,154 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "center",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "layer-shell": true,
+  "layer-shell-cover-screen": true,
+  "cssPriority": "application",
+  "control-center-margin-top": 8,
+  "control-center-margin-bottom": 8,
+  "control-center-margin-right": 8,
+  "control-center-margin-left": 8,
+  "notification-2fa-action": true,
+  "notification-inline-replies": false,
+  "notification-icon-size": 64,
+  "notification-body-image-height": 100,
+  "notification-body-image-width": 200,
+  "timeout": 10,
+  "timeout-low": 5,
+  "timeout-critical": 0,
+  "fit-to-screen": true,
+  "relative-timestamps": true,
+  "control-center-width": 420,
+  "control-center-height": 600,
+  "notification-window-width": 400,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "transition-time": 250,
+  "hide-on-clear": false,
+  "hide-on-action": true,
+  "text-empty": "No Notifications",
+  "script-fail-notify": true,
+  "scripts": {
+    "kitty-notification": {
+      "exec": "echo 'Notification received with kitty theme!'",
+      "urgency": "Normal"
+    },
+    "action-script": {
+      "exec": "echo 'Action triggered!'",
+      "urgency": "Normal",
+      "run-on": "action"
+    }
+  },
+  "notification-visibility": {
+    "spotify-muted": {
+      "urgency": "Low",
+      "state": "muted",
+      "app-name": "Spotify"
+    },
+    "discord-transient": {
+      "state": "transient",
+      "app-name": "Discord",
+      "urgency": "Low"
+    }
+  },
+  "widgets": [
+    "inhibitors",
+    "title",
+    "dnd",
+    "mpris",
+    "volume",
+    "buttons-grid",
+    "notifications"
+  ],
+  "widget-config": {
+    "inhibitors": {
+      "text": "Inhibitors",
+      "button-text": "Clear All",
+      "clear-all-button": true
+    },
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "Clear All"
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    },
+    "label": {
+      "max-lines": 5,
+      "text": "Kitty Theme Active"
+    },
+    "mpris": {
+      "image-size": 96,
+      "image-radius": 12,
+      "blur": true
+    },
+    "volume": {
+      "label": "Volume",
+      "show-per-app": false,
+      "show-per-app-icon": true,
+      "show-per-app-label": false,
+      "expand-button-label": "⇧",
+      "collapse-button-label": "⇩",
+      "animation-type": "slide_down",
+      "animation-duration": 250
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "󰖩",
+          "type": "toggle",
+          "active": true,
+          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'",
+          "update-command": "sh -c '[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'"
+        },
+        {
+          "label": "",
+          "type": "toggle",
+          "active": false,
+          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && bluetoothctl power on || bluetoothctl power off'",
+          "update-command": "sh -c '[[ $(bluetoothctl show | grep \"Powered: yes\") ]] && echo true || echo false'"
+        },
+        {
+          "label": "󰌪",
+          "type": "normal",
+          "command": "kitty"
+        },
+        {
+          "label": "󰈹",
+          "type": "normal",
+          "command": "firefox"
+        }
+      ]
+    },
+    "menubar": {
+      "menu#powermenu": {
+        "label": "󰐥",
+        "position": "right",
+        "animation-type": "slide_down",
+        "animation-duration": 250,
+        "actions": [
+          {
+            "label": "󰜉 Reboot",
+            "command": "systemctl reboot"
+          },
+          {
+            "label": "󰐥 Shutdown",
+            "command": "systemctl poweroff"
+          },
+          {
+            "label": "󰍃 Logout",
+            "command": "swaymsg exit"
+          },
+          {
+            "label": "󰒲 Suspend",
+            "command": "systemctl suspend"
+          }
+        ]
+      }
+    }
+  }
+}
