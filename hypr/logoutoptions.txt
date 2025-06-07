@@ -1,0 +1,4 @@
+Bilgisayarı Kapat
+Yeniden Başlat
+Oturumu Kapat
+Uyku Moduna Al
