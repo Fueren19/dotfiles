@@ -1,1 +1,1 @@
-Use Magnetic Orange GTK Theme, Notwaita-Black cursor theme and Fira Sans, SF Pro Display or Outfit as your deskktop font. CaskaydiaCove as your monospace font. Get the nerd font variant (which is called CaskaydiaCode actually)
+Use Magnetic Orange GTK Theme, Notwaita-Black cursor theme and Fira Sans, SF Pro Display or Outfit as your desktop font. CaskaydiaCove as your monospace font. Get the nerd font variant (which is called CaskaydiaCode actually)
